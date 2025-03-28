@@ -1,3 +1,19 @@
 * An evil emacs
 
-Works fine. That's all.
+Pretty straight. Works fine. That's all.
+
+/These are the packages installed via nix becasue straight would hang if it did it from straight./
+
+#+begin_src nix
+{ pkgs, ... }: {
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
+    extraPackages = epkgs: [ epkgs.vterm  epkgs.org-modern ];
+  };
+
+  home.packages = with pkgs; [ nerd-fonts.symbols-only libvterm gcc ];
+}
+#+end_src
+
+_When trying to install org-modern via straight it tries to pull "org" and emacs st freezes._
