@@ -31,6 +31,8 @@
 
 ;; install NANO using straight.el
 (load (expand-file-name "nano.el" user-emacs-directory) t)
+;; Dashboard
+(load (expand-file-name "dashboard.el" user-emacs-directory) t)
 ;; Install org mode
 (load (expand-file-name "org.el" user-emacs-directory) t)
 ;; Load Evil Mode
