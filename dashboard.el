@@ -15,6 +15,8 @@
           (erase-buffer)
           
           ;; Buffer local settings
+          (setq mode-line-format nil)
+          (setq header-line-format nil)
           (setq cursor-type nil)
           (setq line-spacing 0)
           (setq vertical-scroll-bar nil)
@@ -41,7 +43,18 @@
 (add-hook 'window-setup-hook 'nano-dashboard)
 
 ;; Suppress startup messages
-(setq inhibit-startup-message t)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)
-(advice-add #'display-startup-echo-area-message :override #'ignore)
+
+;; Completely suppress startup message, especially for Evil mode
+(setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message t)
+
+;; Completely hide the echo area messages
+(setq inhibit-message t)
+(setq message-log-max nil)
+
+;; Advice to suppress message function
+(defadvice message (around my-suppress-message activate)
+  (let ((inhibit-message t))
+    ad-do-it))
