@@ -12,6 +12,7 @@
 
 ;; Scroll Smoothly
 (setq redisplay-dont-pause t
+      auto-window-vscroll nil
       scroll-margin 1
       scroll-step 4
       scroll-conservatively 10000
