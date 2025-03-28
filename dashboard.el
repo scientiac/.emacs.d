@@ -25,6 +25,7 @@
           
           ;; Vertical padding to center
           (insert-char ?\n padding-center)
+          (insert "\n")
           (insert (propertize "GNU Emacs / N Λ N O" 'face 'nano-face-strong))
           (center-line)
           (insert "\n")
