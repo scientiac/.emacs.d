@@ -65,14 +65,25 @@
  org-agenda-tags-column 0
  org-ellipsis "…")
 
+;; Prettify Fonts only on normal mode.
 (add-hook 'evil-insert-state-entry-hook
           (lambda ()
             (setq-local org-hide-emphasis-markers nil)
-            (org-toggle-pretty-entities)))
-
+            (org-toggle-pretty-entities)
+            (org-toggle-link-display)))
 (add-hook 'evil-insert-state-exit-hook
           (lambda ()
             (setq-local org-hide-emphasis-markers t)
-            (org-toggle-pretty-entities)))
+            (org-toggle-pretty-entities)
+            (org-toggle-link-display)))
 
-(global-org-modern-mode)
+
+;; Enable org-modern-mode only on normal mode.
+(add-hook 'evil-normal-state-entry-hook
+          (lambda ()
+            (when (derived-mode-p 'org-mode)
+              (org-modern-mode 1))))
+(add-hook 'evil-insert-state-entry-hook
+          (lambda ()
+            (when (derived-mode-p 'org-mode)
+              (org-modern-mode -1))))
