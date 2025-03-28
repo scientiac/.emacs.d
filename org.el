@@ -49,7 +49,7 @@
         (45 . "󰡖")))
 
 ;; Basic Org configuration
-(setq org-directory "~/Org")
+(setq org-directory "~/Organism")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq

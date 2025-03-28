@@ -77,8 +77,7 @@
   "C-j" 'next-line
   "C-k" 'previous-line
   "C-l" 'right-char
-  "C-c" 'evil-normal-state
-  "jj" 'evil-normal-state)
+  "C-c" 'evil-normal-state)
 
 ;; Normal mode keymaps
 (general-def 'normal
