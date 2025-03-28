@@ -2,8 +2,6 @@
 (straight-use-package
   '(nano :type git :host github :repo "rougier/nano-emacs"))
 
-(use-package bookmark)
-
 ;; Use NANO
 (setq nano-font-size 11)
 (setq nano-font-family-monospaced "FantasqueSansM Nerd Font Mono")
