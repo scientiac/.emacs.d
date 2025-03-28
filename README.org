@@ -2,6 +2,7 @@
 
 Pretty straight. Works fine. That's all.
 
+# Plan to remove this issue in the future.
 /These are the packages installed via nix becasue straight would hang if it did it from straight./
 
 #+begin_src nix
