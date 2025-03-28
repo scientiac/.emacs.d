@@ -1,5 +1,24 @@
+;; Set normal font (non-mono version)
+(setq nano-font-family "FantasqueSansM Nerd Font")
+
+;; Org-mode font configuration
+(with-eval-after-load 'org
+  (set-face-attribute 'org-default nil 
+                      :font nano-font-family)
+  
+  ;; Ensure italics work
+  (set-face-attribute 'italic nil 
+                      :slant 'italic 
+                      :font (concat nano-font-family " Italic")))
+
 (with-eval-after-load 'org
 (custom-set-faces
+    ;; Emphasis styles
+    '(org-italic ((t (:slant italic))))
+    '(org-bold ((t (:weight bold))))
+    '(org-underline ((t (:underline t))))
+    '(org-strikethrough ((t (:strike-through t))))
+    ;; Headings
     '(org-level-1 ((t (:height 1.5))))
     '(org-level-2 ((t (:height 1.4))))
     '(org-level-3 ((t (:height 1.3))))
