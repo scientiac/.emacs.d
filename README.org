@@ -1,0 +1,3 @@
+* An evil emacs
+
+Works fine. That's all.
