@@ -22,6 +22,7 @@
   
   ;; Disable features that might conflict with Corfu
   (lsp-enable-snippet nil)
+  (lsp-warn-no-matched-clients nil)
   (lsp-enable-symbol-highlighting nil))
 
 ;; LSP-specific completion setup function
