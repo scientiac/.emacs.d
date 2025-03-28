@@ -1,10 +1,10 @@
-  (with-eval-after-load 'org
-    (custom-set-faces
-     '(org-level-1 ((t (:height 1.5))))
-     '(org-level-2 ((t (:height 1.4))))
-     '(org-level-3 ((t (:height 1.3))))
-     '(org-level-4 ((t (:height 1.2))))
-     '(org-level-5 ((t (:height 1.1))))))
+(with-eval-after-load 'org
+(custom-set-faces
+    '(org-level-1 ((t (:height 1.5))))
+    '(org-level-2 ((t (:height 1.4))))
+    '(org-level-3 ((t (:height 1.3))))
+    '(org-level-4 ((t (:height 1.2))))
+    '(org-level-5 ((t (:height 1.1))))))
 
 ;; Ensure packages are installed
 (setq evil-want-keybinding nil)
@@ -42,9 +42,18 @@
  org-insert-heading-respect-content t
 
  ;; Org styling, hide markup etc.
- org-hide-emphasis-markers t
  org-pretty-entities t
  org-agenda-tags-column 0
  org-ellipsis "…")
+
+(add-hook 'evil-insert-state-entry-hook
+          (lambda ()
+            (setq-local org-hide-emphasis-markers nil)
+            (org-toggle-pretty-entities)))
+
+(add-hook 'evil-insert-state-exit-hook
+          (lambda ()
+            (setq-local org-hide-emphasis-markers t)
+            (org-toggle-pretty-entities)))
 
 (global-org-modern-mode)
