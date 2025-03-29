@@ -30,6 +30,20 @@
 (use-package evil-org
   :straight t)
 
+(require 'org-roam)
+(setq org-roam-db-gc-threshold most-positive-fixnum)
+
+;; Setup roam dirs.
+(setq org-roam-directory (file-truename "~/Organism/roam")
+    org-roam-db-location "~/.cache/emacs/org-roam/org-roam.db"
+    ;; Uses the built-in sqlite database.
+    org-roam-database-connector 'sqlite-builtin
+    ;; Completion.
+    org-roam-completion-everywhere t)
+
+;; Keeps the DB in sync.
+(org-roam-db-autosync-mode)
+
 ;; Org mode minimal setup
 (require 'org)
 (require 'org-modern)
