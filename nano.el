@@ -56,23 +56,51 @@
   ;; to allow for toggling of the themes.
   (setq nano-theme-var "light"))
 
+;; Terminal colors for Gruvbox Dark Hard theme
+(setq ansi-color-names-vector
+      ["#1D2021"    ; black (using actual Gruvbox bg instead of #000000)
+       "#FB4934"    ; red
+       "#B8BB26"    ; green (added from Gruvbox palette)
+       "#FABD2F"    ; yellow (added from Gruvbox palette)
+       "#83A598"    ; blue
+       "#D3869B"    ; magenta (added from Gruvbox palette)
+       "#8EC07C"    ; cyan (added from Gruvbox palette)
+       "#EBDBB2"])  ; white
+
+;; Terminal colors for Gruvbox Dark Hard theme (dark variants only)
+(setq ansi-color-names-vector
+      ["#1D2021"    ; black (dark bg)
+       "#CC241D"    ; dark red 
+       "#98971A"    ; dark green
+       "#D79921"    ; dark yellow
+       "#458588"    ; dark blue
+       "#B16286"    ; dark magenta
+       "#689D6A"    ; dark cyan
+       "#A89984"])  ; dark white/gray
+
+;; Set terminal colors when in a terminal
+(defun setup-terminal-colors ()
+  (unless (display-graphic-p)
+    (setq xterm-color-names
+          ["#1D2021" "#CC241D" "#98971A" "#D79921"
+           "#458588" "#B16286" "#689D6A" "#A89984"])
+    
+    ;; Still using darker colors even for "bright" variants
+    (setq xterm-color-names-bright
+          ["#3C3836" "#9D0006" "#79740E" "#B57614"
+           "#076678" "#8F3F71" "#427B58" "#7C6F64"])))
+
+;; Run setup when Emacs is in terminal mode
+(add-hook 'tty-setup-hook 'setup-terminal-colors)
+
 (cond
  ((member "-default" command-line-args) t)
  ((member "-light" command-line-args) (nano-theme-set-light))
  (t (nano-theme-set-dark)))
 (call-interactively 'nano-refresh-theme)
 
-;; Nano default settings (optional)
-(require 'nano-defaults)
-
-;; Nano session saving (optional)
-(require 'nano-session)
-
 ;; Nano header & mode lines (optional)
 (require 'nano-modeline)
-
-;; Nano key bindings modification (optional)
-(require 'nano-bindings)
 
 ;; Compact layout (need to be loaded after nano-modeline)
 (when (member "-compact" command-line-args)

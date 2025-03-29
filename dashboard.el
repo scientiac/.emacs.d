@@ -44,7 +44,6 @@
 (add-hook 'window-setup-hook 'nano-dashboard)
 
 ;; Suppress startup messages
-(setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)
 
 ;; Completely suppress startup message, especially for Evil mode
