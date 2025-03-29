@@ -1,6 +1,5 @@
 ;; Reset Fringes
-(setq default-frame-alist
-      (append (list'(left-fringe  . 18))))
+(setq-default left-fringe-width 8)
 
 ;; Hide the toolbar, menubar.
 (tool-bar-mode -1)

@@ -60,8 +60,8 @@
   :after nerd-icons
   :config
   (setq neo-smart-open t)
-  (setq neo-theme 'arrow)
-  (setq neo-window-width 30))
+  (setq neo-theme 'nerd-icons)
+  (setq neo-window-width 25))
 
 ;; For Keybinds
 (use-package general
