@@ -10,7 +10,7 @@
   ;; Persistent undo history configuration
   (setq undo-tree-auto-save-history t)
   (setq undo-tree-history-directory-alist 
-        `(("." . ,(expand-file-name "undo-tree-history" user-emacs-directory))))
+        `(("." . ,(expand-file-name "persist/undo-tree-history" user-emacs-directory))))
   
   ;; Ensure undo history is loaded
   (setq undo-tree-enable-undo-in-region t)
@@ -32,7 +32,7 @@
   :init
   (save-place-mode 1)
   :config
-  (setq save-place-file (expand-file-name "places" user-emacs-directory)
+  (setq save-place-file (expand-file-name "persist/places" user-emacs-directory)
         save-place-forget-unreadable-files t
         save-place-save-skipped nil))
 
@@ -40,10 +40,10 @@
 (setq
  ;; Centralize backup, autosave, and lock files
  backup-directory-alist 
- `((".*" . ,(expand-file-name "backup/" user-emacs-directory)))
+ `((".*" . ,(expand-file-name "persist/backup/" user-emacs-directory)))
  
  auto-save-file-name-transforms
- `((".*" ,(expand-file-name "autosave/" user-emacs-directory) t))
+ `((".*" ,(expand-file-name "persist/autosave/" user-emacs-directory) t))
  
  ;; Prevent file clutter
  create-lockfiles nil  ; Disable .# lock files
@@ -57,7 +57,11 @@
  version-control t)
 
 ;; Create backup and autosave directories if they don't exist
-(let ((backup-dir (expand-file-name "backup/" user-emacs-directory))
-      (autosave-dir (expand-file-name "autosave/" user-emacs-directory)))
+(let ((persist-dir (expand-file-name "persist/" user-emacs-directory))
+      (backup-dir (expand-file-name "persist/backup/" user-emacs-directory))
+      (autosave-dir (expand-file-name "persist/autosave/" user-emacs-directory))
+      (undotree-dir (expand-file-name "persist/undo-tree-history/" user-emacs-directory)))
+  (mkdir persist-dir t)
   (mkdir backup-dir t)
+  (mkdir undotree-dir t)
   (mkdir autosave-dir t))
