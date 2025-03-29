@@ -26,10 +26,10 @@
           ;; Vertical padding to center
           (insert-char ?\n padding-center)
           (insert "\n")
-          (insert (propertize "GNU Emacs / N Λ N O" 'face 'nano-face-strong))
+          (insert (propertize "GNU Emacs / Λ Z E N" 'face 'nano-face-strong))
           (center-line)
           (insert "\n")
-          (insert (propertize "Emacs made simple" 'face 'nano-face-faded))
+          (insert (propertize "Emacs made zen" 'face 'nano-face-faded))
           (center-line)
           
           (goto-char 0)
@@ -53,8 +53,3 @@
 ;; Completely hide the echo area messages
 (setq inhibit-message t)
 (setq message-log-max nil)
-
-;; Advice to suppress message function
-(defadvice message (around my-suppress-message activate)
-  (let ((inhibit-message t))
-    ad-do-it))
