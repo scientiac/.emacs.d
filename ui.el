@@ -20,10 +20,6 @@
       jit-lock-defer-time 0
       scroll-preserve-screen-position 1)
 
-(set-face-attribute 'mode-line-inactive nil :underline "#434C5E" :foreground "#2E3440")
-(set-face-attribute 'mode-line nil :underline "#434C5E" :foreground "#2E3440")
-(add-hook 'echo-area-clear-hook 'nano-theme--minibuffer)
-
 ;; Fonts for Org
 (defun iac/org-headings (&optional frame)
   "Set Org mode heading font sizes, optionally for a specific FRAME."
