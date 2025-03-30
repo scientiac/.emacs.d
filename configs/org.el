@@ -25,11 +25,6 @@
     '(org-level-4 ((t (:height 1.2))))
     '(org-level-5 ((t (:height 1.1))))))
 
-;; Ensure packages are installed
-(setq evil-want-keybinding nil)
-(use-package evil-org
-  :straight t)
-
 (require 'org-roam)
 (setq org-roam-db-gc-threshold most-positive-fixnum)
 
@@ -40,6 +35,13 @@
     org-roam-database-connector 'sqlite-builtin
     ;; Completion.
     org-roam-completion-everywhere t)
+
+(setq org-roam-capture-templates
+  '(("d" "default" plain
+     ""
+     :target (file+head "${slug}.org"
+              "#+title: ${title}\n#+created: %<%Y-%m-%d %H:%M:%S>\n#+last_modified: %<%Y-%m-%d %H:%M:%S>\n#+filetags: \n\n")
+     :unnarrowed t)))
 
 ;; Keeps the DB in sync.
 (org-roam-db-autosync-mode)
