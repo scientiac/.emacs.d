@@ -5,11 +5,6 @@
   :config
   (setq which-key-idle-delay 0.3))
 
-(use-package treesit-auto
-  :straight t
-  :config
-  (global-treesit-auto-mode))
-
 (use-package evil
   :straight t
   :after org
@@ -19,9 +14,7 @@
   (evil-mode 1)
   :config
   (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+  (add-hook 'org-mode-hook 'evil-org-mode))
 
 (use-package evil-collection
   :straight t
@@ -40,13 +33,16 @@
     :map evil-normal-state-map
     ("gc" . evil-commentary)))
 
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . (lambda () evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 (use-package writeroom-mode
   :straight t)
-
-(use-package vterm
-  :straight t
-  :config
-  (setq vterm-shell "/usr/bin/env zsh"))
 
 ;; Install and configure nerd-icons
 (use-package nerd-icons
@@ -150,17 +146,44 @@
 
 ;; Neotree instead of dired for file exploration
 (my-leader-def 'normal
-  "e" 'neotree-toggle  ; Toggle Neotree sidebar
+  "e" 'neotree-toggle)
+
+;; Buffers
+(my-leader-def 'normal
   "bq" 'kill-buffer
   "bb" 'consult-buffer)
+
+;; Roam
+(my-leader-def 'normal
+  "rr" 'org-roam-node-find
+  "rc" 'org-roam-capture
+  "ri" 'org-roam-node-insert)
+
+;; Org
+(my-leader-def 'normal
+  "os" 'org-insert-structure-template
+  "oo" 'org-open-at-point-global)
 
 ;; Zen mode (focus mode equivalent)
 (my-leader-def 'normal
   "tz" 'writeroom-mode)
 
+(general-def 'insert
+  "A-s" 'lsp-signature-help)
+
+;; Terminal mode escape
+(general-def 'normal
+  "Esc" 'evil-normal-state)
+
+;; Toggle Term
+(use-package vterm
+  :straight t
+  :config
+  (setq vterm-shell "/usr/bin/env fish"))
+
 ;; Terminal bindings
 ;; Function to toggle vterm window
-(defun my-toggle-vterm ()
+(defun toggle-vterm ()
   "Toggle a vterm window below the current one."
   (interactive)
   (let ((vterm-buffer (get-buffer "*vterm*")))
@@ -177,11 +200,4 @@
 
 ;; Leader key binding for toggling vterm
 (my-leader-def 'normal
-  "tt" 'my-toggle-vterm)
-
-(general-def 'insert
-  "A-s" 'lsp-signature-help)
-
-;; Terminal mode escape
-(general-def 'normal
-  "Esc" 'evil-normal-state)
+  "tt" 'toggle-vterm)
