@@ -12,3 +12,5 @@ tree-sitter
 auto-save-list
 .org-id-locations
 bookmarks
+.lsp-session-v1
+projectile-bookmarks.eld
