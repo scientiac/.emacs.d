@@ -7,13 +7,19 @@ Pretty straight. Works fine. That's all.
 
 #+begin_src nix
 { pkgs, ... }: {
+
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
-    extraPackages = epkgs: [ epkgs.vterm  epkgs.org-modern ];
+    extraPackages = epkgs: [
+      epkgs.vterm
+      epkgs.org-modern
+      epkgs.org-roam
+      epkgs.treesit-grammars.with-all-grammars
+    ];
   };
 
-  home.packages = with pkgs; [ nerd-fonts.symbols-only libvterm gcc ];
+  home.packages = with pkgs; [ nixfmt-rfc-style nixd nerd-fonts.symbols-only gcc ];
 }
 #+end_src
 
