@@ -4,9 +4,12 @@
 ;;; Make Emacs vim like.
 
 ;;; Code:
+
+;; Install a git UI
 (use-package magit
   :straight t)
 
+;; A banner that shows possible keybinds.
 (use-package which-key
   :straight t
   :init
