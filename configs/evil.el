@@ -4,6 +4,9 @@
 ;;; Make Emacs vim like.
 
 ;;; Code:
+(use-package magit
+  :straight t)
+
 (use-package which-key
   :straight t
   :init
@@ -42,10 +45,7 @@
 (use-package evil-org
   :ensure t
   :after org
-  :hook (org-mode . (lambda () evil-org-mode))
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+  :hook (org-mode . (lambda () evil-org-mode)))
 
 (use-package writeroom-mode
   :straight t)
@@ -56,14 +56,21 @@
   :custom
   (nerd-icons-font-family "Symbols Nerd Font Mono"))
 
-;; Add Neotree for file exploration, and ensure it loads after nerd-icons
-(use-package neotree
+(use-package nerd-icons-dired
   :straight t
-  :after nerd-icons
+  :commands (nerd-icons-dired-mode))
+
+;; Add Neotree for file exploration, and ensure it loads after nerd-icons
+(use-package dired-sidebar
+  :straight t
   :config
-  (setq neo-smart-open t)
-  (setq neo-theme 'nerd-icons)
-  (setq neo-window-width 25))
+  (setq dired-sidebar-subtree-line-prefix "  ")
+  (setq dired-sidebar-theme 'nerd-icons)
+  (setq dired-sidebar-width 30)
+  (setq dired-free-space nil)
+  (setq dired-sidebar-should-follow-file t))
+
+(add-hook 'dired-sidebar-mode-hook (lambda () (setq header-line-format nil)))
 
 ;; For Keybinds
 (use-package general
@@ -150,9 +157,9 @@
   :init
   (marginalia-mode 1))
 
-;; Neotree instead of dired for file exploration
+;; Dired for file exploration
 (my-leader-def 'normal
-  "e" 'neotree-toggle)
+  "e" 'dired-sidebar-toggle-sidebar)
 
 ;; Buffers
 (my-leader-def 'normal
