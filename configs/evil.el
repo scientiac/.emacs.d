@@ -4,7 +4,6 @@
 ;;; Make Emacs vim like.
 
 ;;; Code:
-
 (use-package magit
   :straight t)
 
