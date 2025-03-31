@@ -1,5 +1,11 @@
+;;; completions.el --- Enhanced completion setup -*- lexical-binding: t -*-
+
+;;; Commentary:
+;;; Combines LSP, Cape and Corfu for a comprehensive completion experience
+
+;;; Code:
 (defun nano-dashboard ()
-  "Create a minimal dashboard inspired by nano-splash"
+"Create a minimal dashboard inspired by nano-splash."
   (interactive)
   
   ;; Prevent dashboard from showing if files are open
@@ -53,3 +59,5 @@
 ;; Completely hide the echo area messages
 (setq inhibit-message t)
 (setq message-log-max nil)
+
+;;; dashboard.el ends here.

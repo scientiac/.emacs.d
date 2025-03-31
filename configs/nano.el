@@ -1,14 +1,19 @@
+;;; nano.el --- Configuration for Nano Emacs -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;; This file configures Nano Emacs, including font settings, themes,
+;; and layout management.
+
+;;; Code:
+
 ;; Install NANO
 (straight-use-package
   '(nano :type git :host github :repo "rougier/nano-emacs"))
 
-;; Use NANO
-(setq nano-font-size 11)
-(setq nano-font-family-monospaced "FantasqueSansM Nerd Font Mono")
-;; Path to nano emacs modules (mandatory)
-(add-to-list 'load-path "/Users/rougier/Documents/GitHub/nano-emacs")
+;; Define font variables
+(defvar nano-font-size 11 "Font size for Nano Emacs.")
+(defvar nano-font-family-monospaced "FantasqueSansM Nerd Font Mono" "Monospaced font family for Nano Emacs.")
 
-;; Default layout (optional)
 (require 'nano-layout)
 
 ;; Theming Command line options (this will cancel warning messages)
@@ -72,3 +77,5 @@
 (set-face-attribute 'mode-line-inactive nil :underline "#151515" :foreground "#1D2021")
 (set-face-attribute 'mode-line nil :underline "#151515" :foreground "#1D2021")
 (add-hook 'echo-area-clear-hook 'nano-theme--minibuffer)
+
+;;; nano.el ends here.

@@ -1,3 +1,11 @@
+;;; org.el --- Configuration for Org and Roam -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;; This file configures Org mode.
+;; and layout management.
+
+;;; Code:
+
 ;; Set normal font (non-mono version)
 (setq nano-font-family "FantasqueSansM Nerd Font")
 
@@ -103,3 +111,5 @@
           (lambda ()
             (when (derived-mode-p 'org-mode)
               (org-modern-mode -1))))
+
+;;; org.el ends here.

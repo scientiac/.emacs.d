@@ -1,3 +1,13 @@
+;;; persistence.el --- Manage persistent state in Emacs -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;; This file manages persistent state in Emacs, including undo history,
+;; cursor position, and temporary file management.
+
+;;; Code:
+
+(setq global-auto-revert-mode 1)
+
 (use-package undo-tree
   :straight t
   :after evil
@@ -9,7 +19,7 @@
   
   ;; Persistent undo history configuration
   (setq undo-tree-auto-save-history t)
-  (setq undo-tree-history-directory-alist 
+  (setq undo-tree-history-directory-alist
         `(("." . ,(expand-file-name "persist/undo-tree-history" user-emacs-directory))))
   
   ;; Ensure undo history is loaded
@@ -39,7 +49,7 @@
 ;; Temporary and backup file management
 (setq
  ;; Centralize backup, autosave, and lock files
- backup-directory-alist 
+ backup-directory-alist
  `((".*" . ,(expand-file-name "persist/backup/" user-emacs-directory)))
  
  auto-save-file-name-transforms
@@ -65,3 +75,6 @@
   (mkdir backup-dir t)
   (mkdir undotree-dir t)
   (mkdir autosave-dir t))
+
+(provide 'persistence)
+;;; persistence.el ends here

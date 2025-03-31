@@ -1,4 +1,5 @@
 ;;; completions.el --- Enhanced completion setup -*- lexical-binding: t -*-
+
 ;;; Commentary:
 ;;; Combines LSP, Cape and Corfu for a comprehensive completion experience
 
@@ -9,6 +10,13 @@
   :init
   (setq flycheck-mode-globals '(not rust-mode rustic-mode))
   (global-flycheck-mode))
+
+;; Inline flychek mode.
+(use-package flycheck-inline
+  :straight t)
+
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
 
 ;; Cape for flexible completion - load before LSP mode to ensure priorities
 (use-package cape
@@ -143,15 +151,6 @@
   :straight t
   :mode "\\.nix\\'"
   :hook (nix-ts-mode . lsp-deferred))
-  ;; :config
-  ;; ;; Configure nixd as the LSP server
-  ;; (with-eval-after-load 'lsp-mode
-  ;;   (add-to-list 'lsp-language-id-configuration '(nix-ts-mode . "nix"))
-  ;;   (lsp-register-client
-  ;;    (make-lsp-client :new-connection (lsp-stdio-connection '("nixd"))
-  ;;                     :major-modes '(nix-ts-mode)
-  ;;                     :priority -1
-  ;;                     :server-id 'nixd))))
 
 (use-package nix-mode
 :straight t

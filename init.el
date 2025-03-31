@@ -1,3 +1,8 @@
+;;; init.el --- My personal Emacs configuration
+;;; Commentary:
+;; This file contains my Emacs configuration.
+
+;;; Code:
 ;; bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -15,15 +20,14 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Straight Init
-(straight-use-package 'use-package)
-
+;; Straight
 (use-package straight
   :custom
   (straight-use-package-by-default t))
 
-;; Config Reload    
+;; Config Reload
 (defun reload-init-file ()
+"This is a function that reloads the config file when pressed f5."
   (interactive)
   (load-file user-init-file))
 
@@ -43,3 +47,5 @@
 (load (expand-file-name "configs/persistence.el" user-emacs-directory) t)
 ;; Load UI configuration
 (load (expand-file-name "configs/ui.el" user-emacs-directory) t)
+
+;;; init.el ends here

@@ -1,3 +1,9 @@
+;;; nano.el --- Configuration for Nano Emacs -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;; This file manages UI of my Emacs.
+
+;;; Code:
 ;; Reset Fringes
 (setq-default left-fringe-width 8)
 
@@ -10,8 +16,7 @@
 (set-face-attribute 'bold nil :weight 'bold)
 
 ;; Scroll Smoothly
-(setq redisplay-dont-pause t
-      auto-window-vscroll nil
+(setq auto-window-vscroll nil
       scroll-margin 1
       scroll-step 4
       scroll-conservatively 10000
@@ -33,3 +38,5 @@
 ;; Run on startup and whenever a new frame is created
 (add-hook 'after-init-hook #'iac/org-headings)
 (add-hook 'after-make-frame-functions #'iac/org-headings)
+
+;;; ui.el ends here.

@@ -1,3 +1,9 @@
+;;; evil.el --- Evil Setup -*- lexical-binding: t -*-
+
+;;; Commentary:
+;;; Make Emacs vim like.
+
+;;; Code:
 (use-package which-key
   :straight t
   :init
@@ -99,7 +105,7 @@
   "?/" (lambda () (interactive) (evil-yank (region-beginning) (region-end)) (swiper (current-kill 0))))
 
 ;; Install consult with straight.el
-;; Disable default completion help messages 
+;; Disable default completion help messages.
 (setq completion-show-help nil)
 
 ;; Install and configure vertico
@@ -201,3 +207,5 @@
 ;; Leader key binding for toggling vterm
 (my-leader-def 'normal
   "tt" 'toggle-vterm)
+
+;;; evil.el ends here.
