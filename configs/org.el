@@ -5,20 +5,7 @@
 ;; and layout management.
 
 ;;; Code:
-
-;; Set normal font (non-mono version)
-(setq nano-font-family "FantasqueSansM Nerd Font")
-
 ;; Org-mode font configuration
-(with-eval-after-load 'org
-  (set-face-attribute 'org-default nil 
-                      :font nano-font-family)
-  
-  ;; Ensure italics work
-  (set-face-attribute 'italic nil 
-                      :slant 'italic 
-                      :font (concat nano-font-family " Italic")))
-
 (with-eval-after-load 'org
 (custom-set-faces
     ;; Emphasis styles
@@ -80,14 +67,12 @@
  ;; Edit settings
  org-auto-align-tags nil
  org-tags-column 0
- org-catch-invisible-edits 'show-and-error
  org-special-ctrl-a/e t
  org-insert-heading-respect-content t
 
  ;; Org styling, hide markup etc.
- org-pretty-entities t
- org-agenda-tags-column 0
- org-ellipsis "…")
+ org-hide-emphasis-markers t
+ org-pretty-entities t)
 
 ;; Prettify Fonts only on normal mode.
 (add-hook 'evil-insert-state-entry-hook
