@@ -35,7 +35,7 @@
   '(("d" "default" plain
      ""
      :target (file+head "${slug}.org"
-              "#+title: ${title}\n#+created: %<%Y-%m-%d %H:%M:%S>\n#+last_modified: %<%Y-%m-%d %H:%M:%S>\n#+filetags: \n\n")
+              "#+title: ${title}\n#+created: <%<%Y-%m-%d %H:%M:%S>>\n#+last_modified: <%<%Y-%m-%d %H:%M:%S>>\n#+filetags: \n\n")
      :unnarrowed t)))
 
 ;; Keeps the DB in sync.
@@ -71,6 +71,7 @@
  org-insert-heading-respect-content t
 
  ;; Org styling, hide markup etc.
+ org-link-descriptive 0
  org-hide-emphasis-markers t
  org-pretty-entities t)
 

@@ -4,12 +4,6 @@
 ;; This file manages UI of my Emacs.
 
 ;;; Code:
-
-;; Install all-the-icons (required for doom-modeline icons)
-(use-package all-the-icons
-  :if (display-graphic-p))
-
-;; Fonts Setup
 (set-face-attribute 'bold nil :weight 'bold)
 
 ;; No startup  screen
