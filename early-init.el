@@ -11,12 +11,12 @@
 ;; Set default (fixed-pitch) font
 (set-face-attribute 'default nil
                     :family "FantasqueSansM Nerd Font Mono"
-                    :height 120) ;; Adjust size as needed
+                    :height 110) ;; Adjust size as needed
 
 ;; Set variable-pitch font
 (set-face-attribute 'variable-pitch nil
                     :family "FantasqueSansM Nerd Font"
-                    :height 120) ;; Adjust size as needed
+                    :height 110) ;; Adjust size as needed
 
 ;; (load-theme 'modus-vivendi t)
 ;; (set-face-attribute 'fringe nil :background nil)
@@ -50,6 +50,8 @@
 ;; Custom palette overrides to ensure fringes match background exactly
 (customize-set-variable 'modus-themes-common-palette-overrides
 						'((fringe unspecified)
+						  (bg-line-number-inactive unspecified)
+						  (bg-line-number-active unspecified)
 						  (bg-fringe unspecified)))
 
 ;; Define separate overrides for each theme

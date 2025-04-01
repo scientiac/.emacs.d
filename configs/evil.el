@@ -179,8 +179,9 @@
   "os" 'org-insert-structure-template
   "oo" 'org-open-at-point-global)
 
-;; Zen mode (focus mode equivalent)
+;; Toggles
 (my-leader-def 'normal
+  "tl" 'display-line-numbers-mode
   "tz" 'writeroom-mode)
 
 (general-def 'insert
