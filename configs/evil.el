@@ -63,17 +63,16 @@
   :straight t
   :commands (nerd-icons-dired-mode))
 
-;; Add Neotree for file exploration, and ensure it loads after nerd-icons
+;; Add sidebar for file exploration
 (use-package dired-sidebar
   :straight t
   :config
   (setq dired-sidebar-subtree-line-prefix "  ")
   (setq dired-sidebar-theme 'nerd-icons)
   (setq dired-sidebar-width 30)
-  (setq dired-free-space nil)
-  (setq dired-sidebar-should-follow-file t))
+  (setq dired-free-space nil))
 
-(add-hook 'dired-sidebar-mode-hook (lambda () (setq header-line-format nil)))
+(add-hook 'dired-sidebar-mode-hook (lambda () (setq mode-line-format nil)))
 
 ;; For Keybinds
 (use-package general
