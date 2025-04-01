@@ -4,16 +4,59 @@
 ;; This file manages UI of my Emacs.
 
 ;;; Code:
-;; Reset Fringes
-(setq-default left-fringe-width 8)
 
-;; Hide the toolbar, menubar.
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+;; Install all-the-icons (required for doom-modeline icons)
+(use-package all-the-icons
+  :if (display-graphic-p))
 
 ;; Fonts Setup
 (set-face-attribute 'bold nil :weight 'bold)
+
+;; No startup  screen
+(setq inhibit-startup-screen t)
+
+;; No startup message
+(setq inhibit-startup-message t)
+(eval '(setq inhibit-startup-echo-area-message "scientiac"))
+
+;; No message in scratch buffer
+(setq initial-scratch-message nil)
+
+;; Initial buffer
+(setq initial-buffer-choice nil)
+
+;; No frame title
+(setq frame-title-format nil)
+
+;; No file dialog
+(setq use-file-dialog nil)
+
+;; No dialog box
+(setq use-dialog-box nil)
+
+;; No popup windows
+(setq pop-up-windows nil)
+
+;; No empty line indicators
+(setq indicate-empty-lines nil)
+
+;; No cursor in inactive windows
+(setq cursor-in-non-selected-windows nil)
+
+;; Tab.space equivalence
+(setq-default tab-width 4)
+
+;; Buffer encoding
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment   'utf-8)
+
+(setq initial-frame-alist default-frame-alist)
+
+;; y/n for  answering yes/no questions
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Scroll Smoothly
 (setq auto-window-vscroll nil

@@ -1,4 +1,5 @@
-;;; init.el --- My personal Emacs configuration
+;;; init.el --- My personal Emacs configuration  -*- lexical-binding: t -*-
+
 ;;; Commentary:
 ;; This file contains my Emacs configuration.
 
@@ -33,10 +34,10 @@
 
 (global-set-key (kbd "<f5>") 'reload-init-file)
 
-;; install NANO using straight.el
-(load (expand-file-name "configs/nano.el" user-emacs-directory) t)
-;; Dashboard
+; Dashboard
 (load (expand-file-name "configs/dashboard.el" user-emacs-directory) t)
+;; Load UI configuration
+(load (expand-file-name "configs/ui.el" user-emacs-directory) t)
 ;; Install org mode
 (load (expand-file-name "configs/org.el" user-emacs-directory) t)
 ;; Load Evil Mode
@@ -45,7 +46,5 @@
 (load (expand-file-name "configs/completions.el" user-emacs-directory) t)
 ;; Load Persistence Mode
 (load (expand-file-name "configs/persistence.el" user-emacs-directory) t)
-;; Load UI configuration
-(load (expand-file-name "configs/ui.el" user-emacs-directory) t)
 
 ;;; init.el ends here
