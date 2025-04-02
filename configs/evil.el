@@ -199,25 +199,51 @@
   :config
   (setq vterm-shell "/usr/bin/env fish"))
 
-;; Terminal bindings
-;; Function to toggle vterm window
+(defun close-window-on-exit (process event)
+"Close the window when the PROCESS (Vterm) exits."
+  (when (memq (process-status process) '(exit signal))
+    (let ((win (get-buffer-window (process-buffer process))))
+      (when win (delete-window win)))))
+
+(defun close-window-on-exit-eshell ()
+  "Close the Eshell window when Eshell exits."
+  (when (eq major-mode 'eshell-mode)
+    (let ((win (get-buffer-window (current-buffer))))
+      (when win (delete-window win)))))
+
+(defun toggle-eshell ()
+  "Toggle an Eshell window below the current one, and close it when exited."
+  (interactive)
+  (let ((eshell-buffer (get-buffer "*eshell*")))
+    (if (and eshell-buffer (get-buffer-window eshell-buffer t))
+        (delete-window (get-buffer-window eshell-buffer t)) ;; Close if visible
+      (progn
+        (split-window-below)
+        (other-window 1)
+        (if eshell-buffer
+            (switch-to-buffer eshell-buffer)
+          (eshell))
+        (add-hook 'eshell-exit-hook #'close-window-on-exit-eshell)))))
+
 (defun toggle-vterm ()
-  "Toggle a vterm window below the current one."
+  "Toggle a vterm window below the current one, and close it when exited."
   (interactive)
   (let ((vterm-buffer (get-buffer "*vterm*")))
     (if (and vterm-buffer (get-buffer-window vterm-buffer t))
-        ;; If vterm is visible, delete its window
-        (delete-window (get-buffer-window vterm-buffer t))
-      ;; If vterm isn’t visible, create it
+        (delete-window (get-buffer-window vterm-buffer t)) ;; Close if visible
       (progn
         (split-window-below)
         (other-window 1)
         (if vterm-buffer
             (switch-to-buffer vterm-buffer)
-          (vterm))))))
+          (vterm))
+        (let ((proc (get-buffer-process (current-buffer))))
+          (when proc
+            (set-process-sentinel proc #'close-window-on-exit)))))))
 
-;; Leader key binding for toggling vterm
+;; Leader key bindings
 (my-leader-def 'normal
-  "tt" 'toggle-vterm)
+  "tt" 'toggle-eshell  ;; Toggle Eshell with `SPC tt`
+  "tv" 'toggle-vterm)  ;; Toggle Vterm with `SPC tv`
 
 ;;; evil.el ends here.
