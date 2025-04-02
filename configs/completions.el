@@ -79,7 +79,7 @@
   (corfu-auto t)                 ;; Enable auto completion
   (corfu-separator ?\s)          ;; Orderless field separator
   (corfu-quit-at-boundary nil)   ;; Don't quit at completion boundary to show multiple sources
-  (corfu-quit-no-match nil)      ;; Don't quit if no match to allow switching sources
+  (corfu-quit-no-match t)        ;; Quit if no match
   (corfu-preview-current nil)    ;; Disable current candidate preview
   :bind
   (:map corfu-map
