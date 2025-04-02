@@ -18,3 +18,4 @@ elpa/nix-mode-1.5.0
 .cache
 transient
 tramp
+eshell
