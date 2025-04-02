@@ -42,6 +42,8 @@
 (load (expand-file-name "configs/org.el" user-emacs-directory) t)
 ;; Load Evil Mode
 (load (expand-file-name "configs/evil.el" user-emacs-directory) t)
+;; Load Eshell
+(load (expand-file-name "configs/eshell.el" user-emacs-directory) t)
 ;; Load Completions Mode
 (load (expand-file-name "configs/completions.el" user-emacs-directory) t)
 ;; Load Persistence Mode
