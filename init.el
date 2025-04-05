@@ -34,6 +34,13 @@
 
 (global-set-key (kbd "<f5>") 'reload-init-file)
 
+; Theme Setup
+(load (expand-file-name "configs/theme-sync.el" user-emacs-directory) t)
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'theme-sync)
+            (iac/setup-theme-sync)))
+
 ; Dashboard
 (load (expand-file-name "configs/dashboard.el" user-emacs-directory) t)
 ;; Load UI configuration
