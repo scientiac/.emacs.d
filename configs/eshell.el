@@ -85,7 +85,7 @@
         '("btm" "less" "more" "vim" "nvim" "top" "nano" "watch"))
   (setq eshell-visual-subcommands
         '(("git" "log" "diff" "show")))
-  (setq eshell-term-name "xterm-256color"))
+  (setq eshell-term-name "xterm-256color")
 
 ;; Syntax highlighting
 (use-package eshell-syntax-highlighting
@@ -106,6 +106,7 @@
     (insert "alias g git\n")
     (insert "alias btm btm --color=always\n")
     (insert "alias htop btm\n")
+    (insert "alias clear clear-scrollback\n")
     (insert "alias l ls -la\n")))
 
 ;; Cape integration for better completions

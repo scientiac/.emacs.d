@@ -177,8 +177,8 @@
 ;; Org
 (my-leader-def 'normal
   "os" 'org-insert-structure-template
-  "oc" 'org-update-checkbox-count
   "ot" 'org-toggle-checkbox
+  "od" 'org-todo
   "oo" 'org-open-at-point-global)
 
 ;; Toggles
