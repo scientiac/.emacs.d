@@ -17,6 +17,17 @@
   :config
   (setq which-key-idle-delay 0.3))
 
+;; Use Doom-Modeline
+(use-package doom-modeline
+  :straight t
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (setq doom-modeline-height 25)
+  (setq doom-modeline-bar-width 1))
+
+(custom-set-faces
+  '(doom-modeline-bar ((t (:background "#000000" :inherit mode-line)))))
+
 (use-package evil
   :straight t
   :after org
@@ -48,7 +59,7 @@
 (use-package evil-org
   :ensure t
   :after org
-  :hook (org-mode . (lambda () evil-org-mode)))
+  :hook (org-mode . evil-org-mode))
 
 (use-package writeroom-mode
   :straight t)
@@ -142,8 +153,9 @@
 
 ;; Your existing keybindings
 (my-leader-def 'normal
-  "ff" 'consult-fd         ; Find files using 'fd' utility
-  "fg" 'consult-ripgrep)   ; Search in files using 'ripgrep'
+  "ff" 'project-find-file   ; Find files in the project
+  "fg" 'consult-ripgrep   ; Search in files using 'ripgrep'
+  "fo" 'consult-outline)   ; Search in current file
 
 ;; Optional: Orderless for better matching
 (use-package orderless
