@@ -3,7 +3,7 @@
 Pretty straight. Works fine. That's all.
 
 # Plan to remove this issue in the future.
-/These are the packages installed via nix becasue straight would hang if it did it from straight./
+/These are the packages installed via nix becasue emacs would hang if I did it from straight./
 
 #+begin_src nix
 { pkgs, ... }: {
@@ -23,4 +23,4 @@ Pretty straight. Works fine. That's all.
 }
 #+end_src
 
-_When trying to install org-modern via straight it tries to pull "org" and emacs st freezes._
+_When trying to install org-modern via straight it tries to pull "org" and emacs freezes._
