@@ -4,6 +4,8 @@
 ;;; Combines LSP, Cape and Corfu for a comprehensive completion experience
 
 ;;; Code:
+(electric-pair-mode 1)
+
 (use-package flycheck
   :straight t
   :commands global-flycheck-mode
