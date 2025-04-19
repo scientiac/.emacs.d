@@ -66,6 +66,10 @@
  delete-old-versions t
  version-control t)
 
+;; Have Emacs maintain a history of mini buffer commands and opened files.
+(savehist-mode 1)
+(recentf-mode 1)
+
 ;; Create backup and autosave directories if they don't exist
 (let ((persist-dir (expand-file-name "persist/" user-emacs-directory))
       (backup-dir (expand-file-name "persist/backup/" user-emacs-directory))
