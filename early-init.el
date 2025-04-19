@@ -5,24 +5,38 @@
 
 ;;; Code:
 (setq default-frame-alist '((undecorated . t)))
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; Properly load and configure modus themes
 (require 'modus-themes nil t)
+
 ;; Use customize-set-variable which properly handles not-yet-defined vars
 (customize-set-variable 'modus-themes-bold-constructs t)
 (customize-set-variable 'modus-themes-italic-constructs t)
 (customize-set-variable 'modus-themes-org-blocks 'gray-background)
+
 ;; Custom palette overrides to ensure fringes match background exactly
 (customize-set-variable 'modus-themes-common-palette-overrides
                         '((fringe unspecified)
                           (bg-line-number-inactive unspecified)
                           (bg-line-number-active unspecified)
                           (bg-fringe unspecified)))
-;; Define separate overrides for each theme
+
+;; Define separate overrides for each heme
 (customize-set-variable 'modus-vivendi-palette-overrides
-                        '((border "#191919")))
+                        '((border "#191919")
+						  (bg-mode-line-active unspecified)
+						  (bg-mode-line-inactive unspecified)
+						  (border-mode-line-inactive unspecified)
+						  (border-mode-line-active unspecified)))
+
 (customize-set-variable 'modus-operandi-palette-overrides
-                        '((border "#f0f0f0")))
+                        '((border "#f0f0f0")
+						  (bg-mode-line-active unspecified)
+						  (bg-mode-line-inactive unspecified)
+						  (border-mode-line-inactive unspecified)
+						  (border-mode-line-active unspecified)))
+
 ;; Additional customizations for thinner borders
 (set-frame-parameter nil 'internal-border-width 1)
 
@@ -46,6 +60,7 @@
 ;; (setq default-frame-alist '((background-color . "#000000")))
 (setq package-enable-at-startup nil)
 ;; Set default (fixed-pitch) font
+(set-language-environment "UTF-8")
 (set-face-attribute 'default nil
                     :family "FantasqueSansM Nerd Font Mono"
                     :height 110) ;; Adjust size as needed
@@ -56,7 +71,7 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(setq-default mode-line-format nil)
+;; (setq-default mode-line-format nil)
 ;; Frame Information
 (setq default-frame-alist
       (append '((width                . 140)
