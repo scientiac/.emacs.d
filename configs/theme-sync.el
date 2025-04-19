@@ -6,14 +6,14 @@
 (require 'dbus)
 
 (defun iac/set-theme-from-dbus-value (value)
-  "Set the appropriate theme according to the color-scheme setting VALUE.
-   0 = light theme, 1 = dark theme"
+"Set the appropriate theme according to the color-scheme setting VALUE.
+0 = light theme, 1 = dark theme"
   (message "DBus color-scheme value is %s" value)
   (if (equal value '1)
-      (progn 
+      (progn
         (message "Switching to dark theme (modus-vivendi)")
         (load-theme 'modus-vivendi t))
-    (progn 
+    (progn
       (message "Switching to light theme (modus-operandi)")
       (load-theme 'modus-operandi t))))
 
@@ -25,7 +25,7 @@ PATH and VAR identify the setting, VALUE is the new value."
     (iac/set-theme-from-dbus-value (car value))))
 
 (defun iac/setup-theme-sync ()
-  "Set up synchronization between system theme and Emacs theme for future changes."
+"Set up synchronization between system theme and Emacs theme for future change."
   ;; Only register for future changes - initial theme already set in early-init.el
   (dbus-register-signal
    :session "org.freedesktop.portal.Desktop"
@@ -34,4 +34,10 @@ PATH and VAR identify the setting, VALUE is the new value."
    #'iac/freedesktop-color-scheme-changed))
 
 (provide 'theme-sync)
+
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'theme-sync)
+            (iac/setup-theme-sync)))
+
 ;;; theme-sync.el ends here
