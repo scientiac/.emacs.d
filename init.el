@@ -36,11 +36,6 @@
 
 ; Theme Setup
 (load (expand-file-name "configs/theme-sync.el" user-emacs-directory) t)
-(add-hook 'after-init-hook
-          (lambda ()
-            (require 'theme-sync)
-            (iac/setup-theme-sync)))
-
 ; Dashboard
 (load (expand-file-name "configs/dashboard.el" user-emacs-directory) t)
 ;; Load UI configuration
@@ -49,8 +44,6 @@
 (load (expand-file-name "configs/org.el" user-emacs-directory) t)
 ;; Load Evil Mode
 (load (expand-file-name "configs/evil.el" user-emacs-directory) t)
-;; Load Eshell
-(load (expand-file-name "configs/eshell.el" user-emacs-directory) t)
 ;; Load Completions Mode
 (load (expand-file-name "configs/completions.el" user-emacs-directory) t)
 ;; Load Persistence Mode
