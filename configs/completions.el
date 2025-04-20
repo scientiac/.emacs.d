@@ -18,7 +18,7 @@
   :straight t)
 
 (with-eval-after-load 'flycheck
-  (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
+  (add-hook 'flycheck-mode-hook 'flycheck-inline-mode))
 
 ;; Cape for flexible completion - load before LSP mode to ensure priorities
 (use-package cape
@@ -32,8 +32,7 @@
   
   :config
   ;; Fix file completion for relative paths
-  (setq cape-file-directory-must-exist nil)
-  (setq cape-file-attributes nil))
+  (setq dabbrev-check-all-buffers nil))
 
 ;; Install and configure lsp-mode
 (use-package lsp-mode
@@ -61,7 +60,7 @@
                   (if result
                       ;; Move cape completions into the priority list
                       (let ((capfs (remove #'lsp-completion-at-point completion-at-point-functions)))
-                        (setcdr (last result) (list :company-prefix-length (car result) 
+                        (setcdr (last result) (list :company-prefix-length (car result)
                                                    :exit-function #'ignore
                                                    :annotation-function #'ignore
                                                    :exclusive 'no))
