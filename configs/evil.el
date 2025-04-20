@@ -28,6 +28,10 @@
 (custom-set-faces
   '(doom-modeline-bar ((t (:background "#000000" :inherit mode-line)))))
 
+;; To hide modeline
+(use-package hide-mode-line
+  :straight t)
+
 (use-package evil
   :straight t
   :after org
@@ -83,7 +87,7 @@
   (setq dired-sidebar-width 30)
   (setq dired-free-space nil))
 
-(add-hook 'dired-sidebar-mode-hook (lambda () (setq mode-line-format nil)))
+(add-hook 'dired-sidebar-mode-hook #'hide-mode-line-mode)
 
 ;; For Keybinds
 (use-package general
@@ -108,9 +112,7 @@
   "C-h" 'evil-window-left
   "C-j" 'evil-window-down
   "C-k" 'evil-window-up
-  "C-l" 'evil-window-right
-  "C-d" (lambda () (interactive) (evil-scroll-down nil) (recenter))
-  "C-u" (lambda () (interactive) (evil-scroll-up nil) (recenter)))
+  "C-l" 'evil-window-right)
 
 ;; Resizing splits
 (general-def 'normal
@@ -196,6 +198,7 @@
 ;; Toggles
 (my-leader-def 'normal
   "tl" 'display-line-numbers-mode
+  "tm" 'hide-mode-line-mode
   "tz" 'writeroom-mode)
 
 (general-def 'insert
@@ -255,7 +258,7 @@
 
 ;; Leader key bindings
 (my-leader-def 'normal
-  "tt" 'toggle-eshell  ;; Toggle Eshell with `SPC tt`
-  "tv" 'toggle-vterm)  ;; Toggle Vterm with `SPC tv`
+  "te" 'toggle-eshell  ;; Toggle Eshell with `SPC tt`
+  "tt" 'toggle-vterm)  ;; Toggle Vterm with `SPC tv`
 
 ;;; evil.el ends here.
