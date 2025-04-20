@@ -5,44 +5,32 @@
 ;; and layout management.
 
 ;;; Code:
-;; Org-mode font configuration
-(with-eval-after-load 'org
-(custom-set-faces
-    ;; Emphasis styles
-    '(org-italic ((t (:slant italic))))
-    '(org-bold ((t (:weight bold))))
-    '(org-underline ((t (:underline t))))
-    '(org-strikethrough ((t (:strike-through t))))
-    ;; Headings
-    '(org-level-1 ((t (:height 1.5))))
-    '(org-level-2 ((t (:height 1.4))))
-    '(org-level-3 ((t (:height 1.3))))
-    '(org-level-4 ((t (:height 1.2))))
-    '(org-level-5 ((t (:height 1.1))))))
+(require 'org)
 
+;; Basic Org configuration
+(setq org-directory "~/Organism")
+(setq org-default-notes-file (concat org-directory "/agenda.org"))
+
+;; Setup Org Roam
 (require 'org-roam)
 (setq org-roam-db-gc-threshold most-positive-fixnum)
 
 ;; Setup roam dirs.
 (setq org-roam-directory (file-truename "~/Organism/roam")
     org-roam-db-location "~/.cache/emacs/org-roam/org-roam.db"
-    ;; Uses the built-in sqlite database.
-    org-roam-database-connector 'sqlite-builtin
-    ;; Completion.
     org-roam-completion-everywhere t)
 
 (setq org-roam-capture-templates
   '(("d" "default" plain
      ""
      :target (file+head "${slug}.org"
-              "#+title: ${title}\n#+created: <%<%Y-%m-%d %H:%M:%S>>\n#+last_modified: <%<%Y-%m-%d %H:%M:%S>>\n#+filetags: \n\n")
+              "#+title: ${title}\n#+created: <%<%Y-%m-%d %H:%M:%S>>\n")
      :unnarrowed t)))
 
 ;; Keeps the DB in sync.
 (org-roam-db-autosync-mode)
 
 ;; Org mode minimal setup
-(require 'org)
 (require 'org-modern)
 
 (setq org-modern-fold-stars '(
@@ -58,10 +46,6 @@
       '((32 . "󰄱")
         (88 . "󰱒")
         (45 . "󰡖")))
-
-;; Basic Org configuration
-(setq org-directory "~/Organism")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq
  ;; Edit settings
@@ -97,5 +81,20 @@
           (lambda ()
             (when (derived-mode-p 'org-mode)
               (org-modern-mode -1))))
+
+;; Org-mode font configuration
+(with-eval-after-load 'org
+(custom-set-faces
+    ;; Emphasis styles
+    '(org-italic ((t (:slant italic))))
+    '(org-bold ((t (:weight bold))))
+    '(org-underline ((t (:underline t))))
+    '(org-strikethrough ((t (:strike-through t))))
+    ;; Headings
+    '(org-level-1 ((t (:height 1.5))))
+    '(org-level-2 ((t (:height 1.4))))
+    '(org-level-3 ((t (:height 1.3))))
+    '(org-level-4 ((t (:height 1.2))))
+    '(org-level-5 ((t (:height 1.1))))))
 
 ;;; org.el ends here.
