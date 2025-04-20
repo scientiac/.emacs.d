@@ -4,7 +4,6 @@
 ;;; Code:
 
 (defun nano-dashboard ()
-  "Create a minimal dashboard inspired by nano-splash that remains centered when resizing."
   (interactive)
   
   ;; Prevent dashboard from showing if files are open
@@ -16,13 +15,9 @@
           (erase-buffer)
           
           ;; Buffer local settings
-          (setq mode-line-format nil)
-          (setq header-line-format nil)
           (setq cursor-type nil)
-          (setq line-spacing 0)
-          (setq vertical-scroll-bar nil)
-          (setq horizontal-scroll-bar nil)
-          
+          (global-hide-mode-line-mode 1)
+
           ;; Use special-mode as parent to get some convenient behaviors
           (special-mode)
           
@@ -92,7 +87,6 @@
 
 ;; Replace nano-splash with our custom dashboard
 (add-hook 'window-setup-hook 'nano-dashboard)
-
 ;; Completely hide the echo area messages
 (setq inhibit-message t)
 (setq message-log-max nil)
