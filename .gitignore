@@ -19,3 +19,7 @@ elpa/nix-mode-1.5.0
 transient
 tramp
 eshell
+history
+org-roam.db
+projects
+recentf
