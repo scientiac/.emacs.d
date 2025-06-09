@@ -34,11 +34,11 @@
 (require 'org-modern)
 
 (setq org-modern-fold-stars '(
-                              ("⯈" . "⯆")
                               ("▶" . "▼")
                               ("▷" . "▽")
+                              ("▸" . "▾")
                               ("▹" . "▿")
-                              ("▸" . "▾")))
+                              ("⯈" . "⯆")))
 
 (setq org-modern-hide-stars 'leading)
 
