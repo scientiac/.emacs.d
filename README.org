@@ -24,3 +24,9 @@ Pretty straight. Works fine. That's all.
 #+end_src
 
 _When trying to install org-modern via straight it tries to pull "org" and emacs freezes._
+
+** For Pacman
+
+#+begin_src sh
+  sudo pacman -S emacs-wayland fd ripgrep tree-sitter-langs
+#+end_src
