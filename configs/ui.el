@@ -52,10 +52,10 @@
 ;; Scroll Smoothly
 (setq auto-window-vscroll nil
 	  mouse-wheel-progressive-speed nil
-      scroll-margin 1
+      scroll-margin 5
       scroll-step 4
       scroll-conservatively 10000
-      fast-but-imprecise-scrolling nil
+      fast-but-imprecise-scrolling t
       jit-lock-defer-time 0
       scroll-preserve-screen-position 1)
 

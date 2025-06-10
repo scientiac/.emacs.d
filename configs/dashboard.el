@@ -16,7 +16,7 @@
           
           ;; Buffer local settings
           (setq cursor-type nil)
-          (global-hide-mode-line-mode 1)
+          ;; (global-hide-mode-line-mode 1)
 
           ;; Use special-mode as parent to get some convenient behaviors
           (special-mode)
