@@ -28,5 +28,5 @@ _When trying to install org-modern via straight it tries to pull "org" and emacs
 ** For Pacman
 
 #+begin_src sh
-  sudo pacman -S emacs-wayland fd ripgrep tree-sitter-langs
+  sudo pacman -S emacs-wayland fd ripgrep tree-sitter-grammars
 #+end_src
