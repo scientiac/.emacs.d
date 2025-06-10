@@ -40,8 +40,23 @@
   (setq display-line-numbers-type 'relative)
   (evil-mode 1)
   :config
+  (add-hook 'evil-insert-state-entry-hook
+            (lambda ()
+              (when (derived-mode-p 'org-mode)
+                (setq-local org-hide-emphasis-markers nil)
+                (org-toggle-pretty-entities)
+                (org-toggle-link-display))))
+
+  (add-hook 'evil-insert-state-exit-hook
+            (lambda ()
+              (when (derived-mode-p 'org-mode)
+                (setq-local org-hide-emphasis-markers t)
+                (org-toggle-pretty-entities)
+                (org-toggle-link-display))))
+
   (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
   (add-hook 'org-mode-hook 'evil-org-mode))
+
 
 (use-package evil-collection
   :straight t
@@ -212,7 +227,7 @@
 (use-package vterm
   :straight t
   :config
-  (setq vterm-shell "/usr/bin/env fish"))
+  (setq vterm-shell "/usr/bin/env zsh"))
 
 (defun close-window-on-exit (process event)
 "Close the window when the PROCESS (Vterm) exits."
