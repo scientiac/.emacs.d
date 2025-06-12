@@ -6,12 +6,11 @@
 
 ;; Org mode configuration
 (use-package org
-  :straight t
+  :straight (:type built-in)
   :defer t
   :custom
   ;; Basic Org configuration
   (org-directory "~/Organism")
-  (org-default-notes-file (concat org-directory "/agenda.org"))
   ;; Edit settings
   (org-auto-align-tags nil)
   (org-tags-column 0)
